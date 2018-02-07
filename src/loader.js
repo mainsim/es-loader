@@ -48,7 +48,7 @@ class loader {
 	}
 
 	/**
-	 * @description Class map setter
+	 * @description Classes collection setter
 	 * @param {object} cls - Class to register
 	 * @returns void
 	 */
@@ -57,7 +57,7 @@ class loader {
 	}
 
 	/**
-	 * @description Class map getter
+	 * @description Classes collection getter
 	 * @returns Map object
 	 */
 	get include() {
@@ -122,10 +122,10 @@ class loader {
 	}
 
 	/**
-	 * @description Class load method
+	 * @description Define object property
 	 * @param {object} obj - Object to set property to
 	 * @param {string} prop - Property name
-	 * @param {object} val - Promise object containing class
+	 * @param {object} val - Promised class
 	 * @returns void
 	 */
 	define(obj, prop, val) {
