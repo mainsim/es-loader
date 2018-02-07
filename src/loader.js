@@ -1,5 +1,4 @@
 /**
- * @Javascript asynchronous file loader
  * @version 1.0
  * @author Macolic Sven <macolic.sven@gmail.com>
  *
