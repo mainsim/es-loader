@@ -1,10 +1,10 @@
 /**
+ * @Javascript asynchronous file loader
  * @version 1.0
  * @author Macolic Sven <macolic.sven@gmail.com>
  *
  * @license 
  *
- * Javascript asynchronous file loader
  *
  * Copyright (c) 2018 Macolic Sven
  * 
