@@ -1,5 +1,5 @@
 /**
- * @description Javascript asynchronous file loader
+ * @description Javascript asynchronous class loader
  * @version 1.0
  * @author Macolic Sven <macolic.sven@gmail.com>
  *
