@@ -58,7 +58,7 @@ class loader {
 
 	/**
 	 * @description Classes collection getter
-	 * @returns Map object
+	 * @returns Class collection object
 	 */
 	get include() {
 		return this.classes
