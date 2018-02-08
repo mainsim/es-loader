@@ -93,7 +93,7 @@ class loader {
 	 */
 	load(clsNames) {
 		return new Promise(resolve => {
-			let collection = []
+			let collection = new Array
 			Object.keys(clsNames).forEach(i => {
 				let cls = this.parseClass(clsNames[i])
 				switch(this.include.has(cls)) {
