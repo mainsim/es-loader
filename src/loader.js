@@ -71,14 +71,11 @@ class loader {
 	 */
 	preload(clsName, ns, classes, fn) {
 		let cls
-		switch(this.include.has(clsName)) {
-			case true:
-				cls = this.include.get(clsName)				
-			break
-			default:
-				cls = new Object
-				this.define(cls, 'name', clsName)
-			break
+		if(this.include.has(clsName)) {
+			cls = this.include.get(clsName)				
+		} else {
+			cls = new Object
+			this.define(cls, 'name', clsName)
 		}
 		this.define(cls, ns, () => {
 			return this.load(classes).then(fn)
@@ -96,23 +93,20 @@ class loader {
 			let collection = new Array
 			Object.keys(clsNames).forEach(i => {
 				let cls = this.parseClass(clsNames[i])
-				switch(this.include.has(cls)) {
-					case true:
+				if(this.include.has(cls)) {
+					collection[cls] = this.include.get(cls)
+					i == clsNames.length - 1 && resolve(collection)
+				} else {
+					let head = document.querySelector('HEAD')
+					let script = document.createElement('SCRIPT')
+					script.type = 'text/javascript'
+					script.src = clsNames[i] + '.js'
+					script.onload = e => {
 						collection[cls] = this.include.get(cls)
 						i == clsNames.length - 1 && resolve(collection)
-					break
-					default:
-						let head = document.querySelector('HEAD')
-						let script = document.createElement('SCRIPT')
-						script.type = 'text/javascript'
-						script.src = clsNames[i] + '.js'
-						script.onload = e => {
-							collection[cls] = this.include.get(cls)
-							i == clsNames.length - 1 && resolve(collection)
-						}
-						script.onerror = e => console.log(`Filename ${clsNames[i]}.js does not exist!`)
-						head.insertBefore(script, head.children[head.children.length - 1])
-					break
+					}
+					script.onerror = e => console.log(`Filename ${clsNames[i]}.js does not exist!`)
+					head.insertBefore(script, head.children[head.children.length - 1])
 				}
 			})
 		})
