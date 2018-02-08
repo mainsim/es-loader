@@ -10,7 +10,7 @@ class main {
 		_x.load(['js/company', 'js/user']).then(run => {
 
 			//set your properties
-			this.user = new run.user
+			this.user = new run.get('user')
 
 			//loading more classes from same file needs nested approach with then...finally because of asynchronous loading
 			run.company.projects().then(run_cp => {
