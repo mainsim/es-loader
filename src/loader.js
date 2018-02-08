@@ -4,8 +4,6 @@
  * @author Macolic Sven <macolic.sven@gmail.com>
  *
  * @license 
- *
- *
  * Copyright (c) 2018 Macolic Sven
  * 
  * Permission is hereby granted, free of charge, to any person
