@@ -137,7 +137,7 @@ class loader {
 	 * @returns array
 	 */
 	parseClass(src) {
-		return src.match(/\//) ? src.split('/').pop() : [src]	
+		return src.match(/\//) ? src.split('/').pop() : src	
 	}
 
 }
