@@ -65,7 +65,7 @@ class loader {
 	}
 
 	/**
-	 * @description Classes preload method
+	 * @description Preload class collection
 	 * @param {string} clsName - Class name
 	 * @param {string} ns - Class namespace
 	 * @param {array} classes - File names for loading
@@ -91,7 +91,7 @@ class loader {
 
 	/**
 	 * @description Classes load method
-	 * @param {array} clsNames - File collection to load
+	 * @param {array} clsNames - Load class collection
 	 * @returns Promise
 	 */
 	load(clsNames) {
