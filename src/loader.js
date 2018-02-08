@@ -42,7 +42,7 @@ class loader {
 		window.onload = e => {
 			this.app_data = document.querySelector('[app-load]').getAttribute('app-load')
 			this.load([this.app_data]).then(cls => {
-				let start = new cls[this.app_data.match(/\//) ? this.app_data.split('/').pop() : [this.app_data]]
+				let start = new cls[this.parseClass(this.app_data)]
 			})
 		}
 	}
@@ -98,7 +98,7 @@ class loader {
 		return new Promise(resolve => {
 			let collection = []
 			Object.keys(clsNames).forEach(i => {
-				let cls = clsNames[i].match(/\//) ? clsNames[i].split('/').pop() : [clsNames[i]]
+				let cls = this.parseClass(clsNames[i])
 				switch(this.include.has(cls)) {
 					case true:
 						collection[cls] = this.include.get(cls)
@@ -132,6 +132,15 @@ class loader {
 		Object.defineProperty(obj, prop, {
 			value: val
 		})
+	}
+	
+	/**
+	 * @description Parse class source
+	 * @param {string} src - Class sorce to parse
+	 * @returns array
+	 */
+	parseClass(src) {
+		return src.match(/\//) ? src.split('/').pop() : [src]	
 	}
 
 }
