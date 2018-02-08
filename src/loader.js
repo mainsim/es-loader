@@ -93,12 +93,12 @@ class loader {
 	 */
 	load(clsNames) {
 		return new Promise(resolve => {
-			let collection = []
+			let collection = new Map
 			Object.keys(clsNames).forEach(i => {
 				let cls = this.parseClass(clsNames[i])
 				switch(this.include.has(cls)) {
 					case true:
-						collection[cls] = this.include.get(cls)
+						collection.set(cls, this.include.get(cls))
 						i == clsNames.length - 1 && resolve(collection)
 					break
 					default:
@@ -107,7 +107,7 @@ class loader {
 						script.type = 'text/javascript'
 						script.src = clsNames[i] + '.js'
 						script.onload = e => {
-							collection[cls] = this.include.get(cls)
+							collection.set(cls, this.include.get(cls))
 							i == clsNames.length - 1 && resolve(collection)
 						}
 						script.onerror = e => console.log(`Filename ${clsNames[i]}.js does not exist!`)
