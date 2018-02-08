@@ -38,11 +38,10 @@ class loader {
 	 */
 	constructor() {
 		this.classes = new Map
-		this.app_data = new String
 		window.onload = e => {
-			this.app_data = document.querySelector('[app-load]').getAttribute('app-load')
-			this.load([this.app_data]).then(cls => {
-				let start = new cls[this.parseClass(this.app_data)]
+			let app_data = document.querySelector('[app-load]').getAttribute('app-load')
+			this.load([app_data]).then(cls => {
+				let start = new cls[this.parseClass(app_data)]
 			})
 		}
 	}
