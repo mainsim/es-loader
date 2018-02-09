@@ -9,22 +9,22 @@ class main {
 		*/
 		_x.load(['js/company', 'js/user']).then(run => {
 
-			//set your properties
+			//set your properties or whatever
 			this.user = new run.user
 
 			//loading more classes from same file needs nested approach with then...finally because of asynchronous loading
 			run.company.projects().then(run_cp => {
 
-				//set your properties
+				//set your properties or whatever
 				this.companyProjects = new run_cp
 
-				//or return value for then...finally
+				//or return value for then...finally or whatever
 
 			}).finally(() => {
 				
 				run.company.addresses().then(run_ca => {
 					
-					//set your properties
+					//set your properties or whatever
 					this.companyAddresses = new run_ca
 
 					//at this time dependies are loaded and properties are set so we can proceed with this class methods or whatever
