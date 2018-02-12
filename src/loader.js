@@ -39,7 +39,7 @@ class loader {
 		window.onload = e => {
 			let app_data = document.querySelector('[app-load]').getAttribute('app-load')
 			this.load([app_data]).then(cls => {
-				let start = new cls[this.parseClass(app_data)]
+				let start = new cls[loader.parseClass(app_data)]
 			})
 		}
 	}
@@ -70,14 +70,14 @@ class loader {
 	 * @returns void
 	 */
 	preload(clsName, ns, classes, fn) {
-		let cls
+		let cls 
 		if(this.include.has(clsName)) {
 			cls = this.include.get(clsName)				
 		} else {
-			cls = new Object
-			this.define(cls, 'name', clsName)
+			cls = {}
+			loader.define(cls, 'name', clsName)
 		}
-		this.define(cls, ns, () => {
+		loader.define(cls, ns, () => {
 			return this.load(classes).then(fn)
 		})
 		this.include = cls
@@ -90,12 +90,12 @@ class loader {
 	 */
 	load(clsNames) {
 		return new Promise(resolve => {
-			let collection = new Array
+			let collection = []
 			Object.keys(clsNames).forEach(i => {
-				let cls = this.parseClass(clsNames[i])
+				let cls = loader.parseClass(clsNames[i])
 				if(this.include.has(cls)) {
 					collection[cls] = this.include.get(cls)
-					i == clsNames.length - 1 && resolve(collection)
+					Number(i) === clsNames.length - 1 && resolve(collection)
 				} else {
 					let head = document.querySelector('HEAD')
 					let script = document.createElement('SCRIPT')
@@ -103,7 +103,7 @@ class loader {
 					script.src = clsNames[i] + '.js'
 					script.onload = e => {
 						collection[cls] = this.include.get(cls)
-						i == clsNames.length - 1 && resolve(collection)
+						Number(i) === clsNames.length - 1 && resolve(collection)
 					}
 					script.onerror = e => console.log(`Filename ${clsNames[i]}.js does not exist!`)
 					head.insertBefore(script, head.children[head.children.length - 1])
@@ -119,7 +119,7 @@ class loader {
 	 * @param {object} val - Promised class
 	 * @returns void
 	 */
-	define(obj, prop, val) {
+    static define(obj, prop, val) {
 		Object.defineProperty(obj, prop, {
 			value: val
 		})
@@ -130,7 +130,7 @@ class loader {
 	 * @param {string} src - Class sorce to parse
 	 * @returns array
 	 */
-	parseClass(src) {
+	static parseClass(src) {
 		return src.match(/\//) ? src.split('/').pop() : src	
 	}
 
