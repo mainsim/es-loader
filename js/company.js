@@ -37,8 +37,8 @@ _x.preload('company', 'addresses', ['js/user'], run => {
 			//we call superclass to extend it
 			super()
 
-            //set your properties or whatever
-            //static userList method from user class
+            		//set your properties or whatever
+		    	//static userList method from user class
 			this.employers = run.user.userList
 
 			//proceed with class methods or whatever
