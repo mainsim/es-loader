@@ -2,7 +2,7 @@
 
 class tasks {
 
-	taskData(user) {
+	static taskData(user) {
 
 		return `${user} has tasks`
 

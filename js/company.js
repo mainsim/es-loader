@@ -17,7 +17,8 @@ _x.preload('company', 'projects', ['js/user', 'js/tasks'], run => {
 
 			//set your properties or whatever
 			let user = new run.user
-			this.projectList = this.taskData(user.userName)
+			//static taskData method from tasks class
+			this.projectList = run.tasks.taskData(user.userName)
 
 			//proceed with class methods or whatever
 
@@ -36,8 +37,9 @@ _x.preload('company', 'addresses', ['js/user'], run => {
 			//we call superclass to extend it
 			super()
 
-			//take heritage from abstract and set your properties or whatever 
-			this.employers = this.userList
+            //set your properties or whatever
+            //static userList method from user class
+			this.employers = run.user.userList
 
 			//proceed with class methods or whatever
 

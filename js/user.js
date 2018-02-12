@@ -8,9 +8,9 @@ class user {
 
 	}
 
-	userList() {
+	static userList() {
 
-		return new Map([['jack', 'london'], ['winnie', 'the pooh']])
+		return new Map([['jack', 'london'], ['white', 'fang']])
 
 	}
 
