@@ -12,7 +12,7 @@ _x.preload('company', 'projects', ['js/user', 'js/tasks'], run => {
 
 		constructor() {
 
-			//we call superclass to extend it
+			//we call superclass before accessing 'this' or returning from derived constructor
 			super()
 
 			//set your properties or whatever
@@ -34,11 +34,11 @@ _x.preload('company', 'addresses', ['js/user'], run => {
 
 		constructor() {
 
-			//we call superclass to extend it
+			//we call superclass before accessing 'this' or returning from derived constructor
 			super()
 
-            		//set your properties or whatever
-		    	//static userList method from user class
+            //set your properties or whatever
+            //static userList method from user class
 			this.employers = run.user.userList
 
 			//proceed with class methods or whatever
