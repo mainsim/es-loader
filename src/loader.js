@@ -118,7 +118,7 @@ class loader {
 	 * @param {object} val - Promised class
 	 * @returns void
 	 */
-    static define(obj, prop, val) {
+    	static define(obj, prop, val) {
 		Object.defineProperty(obj, prop, {
 			value: val
 		})
