@@ -84,7 +84,7 @@ class loader {
 	}
 
 	/**
-	 * @description Load files
+	 * @description Load class collection
 	 * @param {array} classPaths - Class path collection
 	 * @returns Promised class
 	 */
