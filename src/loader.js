@@ -1,5 +1,5 @@
 /**
- * @description Modern JavaScript asynchronous class loader
+ * @description Javascript asynchronous class loader
  * @version 1.0
  * @author Macolic Sven <macolic.sven@gmail.com>
  *
@@ -37,9 +37,9 @@ class loader {
 	constructor() {
 		this.classes = new Map
 		window.onload = e => {
-			let app_data = document.querySelector('[app-load]').getAttribute('app-load')
-			this.load([app_data]).then(cls => {
-				new cls[loader.parseClass(app_data)]
+			let main = document.querySelector('[load]').getAttribute('load')
+			this.load([main]).then(run => {
+				new run[loader.parseClass(main)]
 			})
 		}
 	}
@@ -104,7 +104,7 @@ class loader {
 						Number(i) === clsNames.length - 1 && resolve(collection)
 					}
 					script.onerror = e => console.log(`Filename ${clsNames[i]}.js does not exist!`)
-                    			document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
+                    document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
 				}
 			})
 		})
@@ -117,7 +117,7 @@ class loader {
 	 * @param {object} val - Promised class
 	 * @returns void
 	 */
-    	static define(obj, prop, val) {
+    static define(obj, prop, val) {
 		Object.defineProperty(obj, prop, {
 			value: val
 		})
@@ -134,7 +134,7 @@ class loader {
 
 }
 
-loader.define(window, document.querySelector('[app-load]').getAttribute('instance'), new loader)
+loader.define(window, document.querySelector('[load]').getAttribute('instance'), new loader)
 
 
 
