@@ -45,7 +45,7 @@ class loader {
 	}
 
 	/**
-	 * @description Classes collection setter
+	 * @description Class collection setter
 	 * @param {object} _class - Class to register
 	 * @returns void
 	 */
@@ -54,7 +54,7 @@ class loader {
 	}
 
 	/**
-	 * @description Classes collection getter
+	 * @description Class collection getter
 	 * @returns Class collection object
 	 */
 	get include() {
