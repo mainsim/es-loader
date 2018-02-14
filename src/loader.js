@@ -35,7 +35,7 @@ class loader {
 	 * @returns void
 	 */
 	constructor() {
-		this.classes = new Map
+		this._include = new Map
 		window.onload = e => {
 			let main = document.querySelector('[load]').getAttribute('load')
 			this.load([main]).then(run => {
@@ -50,7 +50,7 @@ class loader {
 	 * @returns void
 	 */
 	set include(cls) {
-		this.classes.set(cls.name, cls)
+		this._include.set(cls.name, cls)
 	}
 
 	/**
@@ -58,7 +58,7 @@ class loader {
 	 * @returns Class collection object
 	 */
 	get include() {
-		return this.classes
+		return this._include
 	}
 
 	/**
