@@ -98,7 +98,6 @@ class loader {
 					Number(i) === clsNames.length - 1 && resolve(collection)
 				} else {
 					let head = document.querySelector('HEAD'), script = document.createElement('SCRIPT')
-					script.type = 'text/javascript'
 					script.src = clsNames[i] + '.js'
 					script.onload = e => {
 						collection[cls] = this.include.get(cls)
