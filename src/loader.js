@@ -66,7 +66,7 @@ class loader {
 	 * @param {string} clsName - Class name
 	 * @param {string} ns - Class namespace
 	 * @param {array} classes - File names for loading
-	 * @param {object} fn - Function containing promised class
+	 * @param {function} fn - Function containing promised class
 	 * @returns void
 	 */
 	preload(clsName, ns, classes, fn) {
@@ -104,7 +104,7 @@ class loader {
 						Number(i) === clsNames.length - 1 && resolve(collection)
 					}
 					script.onerror = e => console.log(`Filename ${clsNames[i]}.js does not exist!`)
-                    			document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
+                    document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
 				}
 			})
 		})
@@ -114,10 +114,10 @@ class loader {
 	 * @description Define object property
 	 * @param {object} obj - Object to set property to
 	 * @param {string} prop - Property name
-	 * @param {object} val - Promised class
+	 * @param {function} val - Promised class
 	 * @returns void
 	 */
-    	static define(obj, prop, val) {
+    static define(obj, prop, val) {
 		Object.defineProperty(obj, prop, {
 			value: val
 		})
