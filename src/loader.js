@@ -46,11 +46,11 @@ class loader {
 
 	/**
 	 * @description Classes collection setter
-	 * @param {object} obj - Class to register
+	 * @param {object} _class - Class to register
 	 * @returns void
 	 */
-	set include(obj) {
-		this._include.set(obj.name, obj)
+	set include(_class) {
+		this._include.set(_class.name, _class)
 	}
 
 	/**
