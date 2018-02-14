@@ -39,7 +39,7 @@ class loader {
 		window.onload = e => {
 			let app_data = document.querySelector('[app-load]').getAttribute('app-load')
 			this.load([app_data]).then(cls => {
-				let start = new cls[loader.parseClass(app_data)]
+				new cls[loader.parseClass(app_data)]
 			})
 		}
 	}
