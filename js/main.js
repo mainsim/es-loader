@@ -27,8 +27,8 @@ class main {
 
 					//at this time dependies are loaded and properties are set so we can proceed with this class methods or whatever
 					main.log(this.user.userName)
-                    main.log(this.companyProjects.projectList)
-                    main.log(this.companyAddresses.employers())
+					main.log(this.companyProjects.projectList)
+					main.log(this.companyAddresses.employers())
 
 				})
 
