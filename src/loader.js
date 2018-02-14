@@ -72,7 +72,7 @@ class loader {
 	preload(className, classProto, classes, fn) {
 		let _class = {}
 		if(this.include.has(className)) {
-            _class = this.include.get(className)
+            		_class = this.include.get(className)
 		} else {
 			loader.define(_class, 'name', className)
 		}
@@ -103,7 +103,7 @@ class loader {
 						Number(i) === classPaths.length - 1 && resolve(collection)
 					}
 					script.onerror = e => console.log(`Filename ${classPaths[i]}.js does not exist!`)
-                    document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
+                    			document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
 				}
 			})
 		})
