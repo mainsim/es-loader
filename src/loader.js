@@ -104,7 +104,7 @@ class loader {
 						Number(i) === clsNames.length - 1 && resolve(collection)
 					}
 					script.onerror = e => console.log(`Filename ${clsNames[i]}.js does not exist!`)
-                    document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
+                    			document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
 				}
 			})
 		})
