@@ -1,5 +1,5 @@
 /**
- * @description Javascript asynchronous class loader
+ * @description Modern JavaScript asynchronous class loader
  * @version 1.0
  * @author Macolic Sven <macolic.sven@gmail.com>
  *
@@ -104,7 +104,7 @@ class loader {
 						Number(i) === clsNames.length - 1 && resolve(collection)
 					}
 					script.onerror = e => console.log(`Filename ${clsNames[i]}.js does not exist!`)
-                    document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
+                    			document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
 				}
 			})
 		})
@@ -117,7 +117,7 @@ class loader {
 	 * @param {object} val - Promised class
 	 * @returns void
 	 */
-    static define(obj, prop, val) {
+    	static define(obj, prop, val) {
 		Object.defineProperty(obj, prop, {
 			value: val
 		})
