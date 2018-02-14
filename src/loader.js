@@ -62,7 +62,7 @@ class loader {
 	}
 
 	/**
-	 * @description Preload class collection
+	 * @description Parse files to load
 	 * @param {string} className - Class name
 	 * @param {string} cns - Class namespace
 	 * @param {array} classes - Classes relative paths
@@ -84,9 +84,9 @@ class loader {
 	}
 
 	/**
-	 * @description Load class collection
+	 * @description Load files
 	 * @param {array} classPaths - Class path collection
-	 * @returns Promise
+	 * @returns Promised class
 	 */
 	load(classPaths) {
 		return new Promise(resolve => {
