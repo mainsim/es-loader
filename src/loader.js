@@ -104,7 +104,7 @@ class loader {
 						Number(i) === classPaths.length - 1 && resolve(collection)
 					}
 					script.onerror = e => console.log(`Filename ${classPaths[i]}.js does not exist!`)
-                    document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
+                    			document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
 				}
 			})
 		})
@@ -117,7 +117,7 @@ class loader {
 	 * @param {mixed} val - Property value
 	 * @returns void
 	 */
-    static define(obj, prop, val) {
+    	static define(obj, prop, val) {
 		Object.defineProperty(obj, prop, {
 			value: val
 		})
