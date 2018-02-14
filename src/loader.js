@@ -62,7 +62,7 @@ class loader {
 	}
 
 	/**
-	 * @description Parse files to load
+	 * @description Preload class collection
 	 * @param {string} className - Class name
 	 * @param {string} cns - Class namespace
 	 * @param {array} classes - Classes relative paths
