@@ -97,14 +97,14 @@ class loader {
 					collection[cls] = this.include.get(cls)
 					Number(i) === clsNames.length - 1 && resolve(collection)
 				} else {
-					let head = document.querySelector('HEAD'), script = document.createElement('SCRIPT')
-					script.src = clsNames[i] + '.js'
+					let script = document.createElement('SCRIPT')
+					script.setAttribute('src', clsNames[i]+'.js')
 					script.onload = e => {
 						collection[cls] = this.include.get(cls)
 						Number(i) === clsNames.length - 1 && resolve(collection)
 					}
 					script.onerror = e => console.log(`Filename ${clsNames[i]}.js does not exist!`)
-					head.insertBefore(script, head.children[head.children.length - 1])
+                    document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
 				}
 			})
 		})
@@ -117,7 +117,7 @@ class loader {
 	 * @param {object} val - Promised class
 	 * @returns void
 	 */
-    	static define(obj, prop, val) {
+    static define(obj, prop, val) {
 		Object.defineProperty(obj, prop, {
 			value: val
 		})
