@@ -97,8 +97,7 @@ class loader {
 					collection[cls] = this.include.get(cls)
 					Number(i) === clsNames.length - 1 && resolve(collection)
 				} else {
-					let head = document.querySelector('HEAD')
-					let script = document.createElement('SCRIPT')
+					let head = document.querySelector('HEAD'), script = document.createElement('SCRIPT')
 					script.type = 'text/javascript'
 					script.src = clsNames[i] + '.js'
 					script.onload = e => {
@@ -119,7 +118,7 @@ class loader {
 	 * @param {object} val - Promised class
 	 * @returns void
 	 */
-    	static define(obj, prop, val) {
+    static define(obj, prop, val) {
 		Object.defineProperty(obj, prop, {
 			value: val
 		})
