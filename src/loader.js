@@ -62,7 +62,7 @@ class loader {
 	}
 
 	/**
-	 * @description Parse files to load
+	 * @description Preload class collection
 	 * @param {string} className - Object name
 	 * @param {string} classProto - Object prototype
 	 * @param {array} classes - Classes relative paths
@@ -84,7 +84,7 @@ class loader {
 	}
 
 	/**
-	 * @description Load files
+	 * @description Load class collection
 	 * @param {array} classPaths - Class path collection
 	 * @returns Promise
 	 */
