@@ -63,24 +63,24 @@ class loader {
 
 	/**
 	 * @description Preload class collection
-	 * @param {string} className - Class name
-	 * @param {string} cns - Class namespace
+	 * @param {string} className - Object name
+	 * @param {string} classProto - Object prototype
 	 * @param {array} classes - Classes relative paths
-	 * @param {function} fn - Function containing promised class
+	 * @param {function} fn - Function containing class
 	 * @returns void
 	 */
-	preload(className, cns, classes, fn) {
-		let cls 
+	preload(className, classProto, classes, fn) {
+		let _class
 		if(this.include.has(className)) {
-			cls = this.include.get(className)
+            _class = this.include.get(className)
 		} else {
-			cls = {}
-			loader.define(cls, 'name', className)
+            _class = {}
+			loader.define(_class, 'name', className)
 		}
-		loader.define(cls, cns, () => {
+		loader.define(_class, classProto, () => {
 			return this.load(classes).then(fn)
 		})
-		this.include = cls
+		this.include = _class
 	}
 
 	/**
@@ -104,7 +104,7 @@ class loader {
 						Number(i) === classPaths.length - 1 && resolve(collection)
 					}
 					script.onerror = e => console.log(`Filename ${classPaths[i]}.js does not exist!`)
-                    			document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
+                    document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
 				}
 			})
 		})
@@ -117,7 +117,7 @@ class loader {
 	 * @param {mixed} val - Property value
 	 * @returns void
 	 */
-    	static define(obj, prop, val) {
+    static define(obj, prop, val) {
 		Object.defineProperty(obj, prop, {
 			value: val
 		})
