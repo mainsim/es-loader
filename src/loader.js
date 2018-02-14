@@ -37,20 +37,20 @@ class loader {
 	constructor() {
 		this._include = new Map
 		window.onload = e => {
-			let main = document.querySelector('[load]').getAttribute('load')
-			this.load([main]).then(run => {
-				new run[loader.parseClass(main)]
+			let classPath = document.querySelector('[load]').getAttribute('load')
+			this.load([classPath]).then(run => {
+				new run[loader.getClassName(classPath)]
 			})
 		}
 	}
 
 	/**
 	 * @description Classes collection setter
-	 * @param {object} cls - Class to register
+	 * @param {object} obj - Class to register
 	 * @returns void
 	 */
-	set include(cls) {
-		this._include.set(cls.name, cls)
+	set include(obj) {
+		this._include.set(obj.name, obj)
 	}
 
 	/**
@@ -63,48 +63,48 @@ class loader {
 
 	/**
 	 * @description Preload class collection
-	 * @param {string} clsName - Class name
-	 * @param {string} ns - Class namespace
-	 * @param {array} classes - File names for loading
+	 * @param {string} className - Class name
+	 * @param {string} cns - Class namespace
+	 * @param {array} classes - Classes relative paths
 	 * @param {function} fn - Function containing promised class
 	 * @returns void
 	 */
-	preload(clsName, ns, classes, fn) {
+	preload(className, cns, classes, fn) {
 		let cls 
-		if(this.include.has(clsName)) {
-			cls = this.include.get(clsName)				
+		if(this.include.has(className)) {
+			cls = this.include.get(className)
 		} else {
 			cls = {}
-			loader.define(cls, 'name', clsName)
+			loader.define(cls, 'name', className)
 		}
-		loader.define(cls, ns, () => {
+		loader.define(cls, cns, () => {
 			return this.load(classes).then(fn)
 		})
 		this.include = cls
 	}
 
 	/**
-	 * @description Classes load method
-	 * @param {array} clsNames - Load class collection
+	 * @description Load class collection
+	 * @param {array} classPaths - Class path collection
 	 * @returns Promise
 	 */
-	load(clsNames) {
+	load(classPaths) {
 		return new Promise(resolve => {
 			let collection = []
-			Object.keys(clsNames).forEach(i => {
-				let cls = loader.parseClass(clsNames[i])
+			Object.keys(classPaths).forEach(i => {
+				let cls = loader.getClassName(classPaths[i])
 				if(this.include.has(cls)) {
 					collection[cls] = this.include.get(cls)
-					Number(i) === clsNames.length - 1 && resolve(collection)
+					Number(i) === classPaths.length - 1 && resolve(collection)
 				} else {
 					let script = document.createElement('SCRIPT')
-					script.setAttribute('src', clsNames[i]+'.js')
+					script.setAttribute('src', classPaths[i]+'.js')
 					script.onload = e => {
 						collection[cls] = this.include.get(cls)
-						Number(i) === clsNames.length - 1 && resolve(collection)
+						Number(i) === classPaths.length - 1 && resolve(collection)
 					}
-					script.onerror = e => console.log(`Filename ${clsNames[i]}.js does not exist!`)
-                    			document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
+					script.onerror = e => console.log(`Filename ${classPaths[i]}.js does not exist!`)
+                    document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
 				}
 			})
 		})
@@ -114,22 +114,22 @@ class loader {
 	 * @description Define object property
 	 * @param {object} obj - Object to set property to
 	 * @param {string} prop - Property name
-	 * @param {function} val - Promised class
+	 * @param {mixed} val - Property value
 	 * @returns void
 	 */
-    	static define(obj, prop, val) {
+    static define(obj, prop, val) {
 		Object.defineProperty(obj, prop, {
 			value: val
 		})
 	}
 	
 	/**
-	 * @description Parse class source
-	 * @param {string} src - Class sorce to parse
-	 * @returns array
+	 * @description Get class name from relative path
+	 * @param {string} classPath - Relative path to parse
+	 * @returns string
 	 */
-	static parseClass(src) {
-		return src.match(/^.*\/(.*)$/)[1]
+	static getClassName(classPath) {
+		return classPath.match(/^.*\/(.*)$/)[1]
 	}
 
 }
