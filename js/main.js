@@ -11,19 +11,19 @@ class main {
 			//set your properties
 			this.user = new run.user
 			//loading more classes from same file needs nested approach with then...finally because of asynchronous loading
-			run.company.projects().then(cp => {
+			run.company.projects().then(companyProjects => {
 
 				//set your properties
-				this.companyProjects = new cp
+				this.companyProjects = new companyProjects
 
 				//or return value for then...finally
 
 			}).finally(() => {
 				
-				run.company.addresses().then(ca => {
+				run.company.addresses().then(companyAddresses => {
 					
 					//set your properties
-					this.companyAddresses = new ca
+					this.companyAddresses = new companyAddresses
 
 					//at this time dependies are loaded and properties are set so we can proceed with this class methods or whatever
 					main.log(this.user.userName)
