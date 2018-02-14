@@ -62,7 +62,7 @@ class loader {
 	}
 
 	/**
-	 * @description Preload class collection
+	 * @description Create class emulation and load files
 	 * @param {string} className - Object name
 	 * @param {string} classProto - Object prototype
 	 * @param {array} classes - Classes relative paths
@@ -72,9 +72,9 @@ class loader {
 	preload(className, classProto, classes, fn) {
 		let _class
 		if(this.include.has(className)) {
-            _class = this.include.get(className)
+            		_class = this.include.get(className)
 		} else {
-            _class = {}
+            		_class = {}
 			loader.define(_class, 'name', className)
 		}
 		loader.define(_class, classProto, () => {
@@ -84,7 +84,7 @@ class loader {
 	}
 
 	/**
-	 * @description Load class collection
+	 * @description Load files
 	 * @param {array} classPaths - Class path collection
 	 * @returns Promise
 	 */
@@ -104,7 +104,7 @@ class loader {
 						Number(i) === classPaths.length - 1 && resolve(collection)
 					}
 					script.onerror = e => console.log(`Filename ${classPaths[i]}.js does not exist!`)
-                    document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
+                    			document.querySelector('HEAD').insertAdjacentElement('beforeend', script)
 				}
 			})
 		})
@@ -117,7 +117,7 @@ class loader {
 	 * @param {mixed} val - Property value
 	 * @returns void
 	 */
-    static define(obj, prop, val) {
+    	static define(obj, prop, val) {
 		Object.defineProperty(obj, prop, {
 			value: val
 		})
