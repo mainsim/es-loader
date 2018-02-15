@@ -1,4 +1,5 @@
 # es-loader
+---
 Javascript asynchronous loader
 
 The loader is made as simplier as possible.
@@ -9,7 +10,7 @@ loader class is instantiated, and the relative path to the first class to load.
 
 Note that the class has to be named the same as filename.
 
-* src="src/loader.js" instance="your_global_variable" load="path_to/your_file_class_name"
+* <script src="src/loader.js" instance="your_global_variable" load="path_to/your_file_class_name"></script>
 
 There are three primary methods which are used.
 
