@@ -7,7 +7,9 @@ The logic follows few rules that cannot be omitted in order to get maximum perfo
 It consist in definition into script tag attributes of the global variable with which the 
 loader class is instantiated, and the relative path to the first class to load.
 
+---
 <script src="src/loader.js" instance="{your_global_variable}" load="js/main"></script>
+---
 
 There are three primary methods which are used.
 
