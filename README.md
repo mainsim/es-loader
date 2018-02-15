@@ -25,7 +25,7 @@ your_global_variable.include = your_class_name
 At that time the second method which is used first to emulate the class that is required and include 
 it automaticaly into the loader so the include method is not necessary.
 The preload method is used in order to load and extend abstract classes into defined class.
-Altough with the preload method you can define more classes per file because it has a possibility to prototype the defined class and ensemble it into an emulated class structure. 
+Altough with the preload method you can define more classes per file because it has a possibility to prototype the defined class which ensembles into the emulated class structure. 
 
 ---
 your_global_variable.preload()
