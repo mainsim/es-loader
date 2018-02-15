@@ -40,5 +40,7 @@ your_global_variable.load()
 
 The main rule is to not call the class which calls its caller in the constructor to avoid endless loop.
 
+Please check the package for further example of usage.
+
 
 
